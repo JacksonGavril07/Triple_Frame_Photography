@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adalee &amp; Jackson Photography — Springfield</title>
+<meta name="description" content="Adalee & Jackson Photography — portrait, engagement, and event photography serving Springfield and the surrounding 5-mile area.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1A17;
+    --fog:#EDEAE2;
+    --fog-dim:#E2DFD5;
+    --paper:#F7F5EF;
+    --blue:#2C4562;
+    --blue-deep:#1E2F42;
+    --gold:#C9A24B;
+    --line:#8A8578;
+    --white:#FFFDF9;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    background:var(--fog);
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:450;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .mono{
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- sprocket strip ---------- */
+  .sprocket-strip{
+    height:22px;
+    background:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+    overflow:hidden;
+  }
+  .sprocket-strip span{
+    width:9px;
+    height:9px;
+    border-radius:2px;
+    background:var(--fog);
+    flex-shrink:0;
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--fog);
+    border-bottom:1px solid rgba(27,26,23,0.12);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.25rem;
+    font-weight:600;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .brand .amp{color:var(--blue); font-style:italic; font-weight:450;}
+  .nav-links{
+    display:flex;
+    gap:34px;
+    font-size:0.82rem;
+  }
+  .nav-links a{
+    position:relative;
+    padding-bottom:4px;
+    color:var(--ink);
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0%;
+    height:1px;
+    background:var(--gold);
+    transition:width 0.25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--ink);
+    color:var(--paper) !important;
+    padding:10px 20px;
+    border-radius:2px;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+  .nav-toggle{display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--ink);}
+
+  @media (max-width:820px){
+    .nav-links{
+      position:absolute;
+      top:100%; left:0; right:0;
+      background:var(--fog);
+      flex-direction:column;
+      gap:0;
+      border-bottom:1px solid rgba(27,26,23,0.12);
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+    }
+    .nav-links.open{max-height:340px;}
+    .nav-links a{padding:16px 32px; width:100%; border-top:1px solid rgba(27,26,23,0.08);}
+    .nav-cta{margin:16px 32px; text-align:center;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:90px 0 70px;
+    overflow:hidden;
+  }
+  .hero-frame{
+    position:relative;
+    border:1px solid var(--ink);
+    padding:56px 48px;
+    background:
+      linear-gradient(180deg, rgba(44,69,98,0.05), transparent 40%),
+      var(--paper);
+  }
+  .frame-label{
+    position:absolute;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    color:var(--line);
+  }
+  .frame-label.tl{top:-11px; left:20px; background:var(--fog); padding:0 8px;}
+  .frame-label.tr{top:-11px; right:20px; background:var(--fog); padding:0 8px;}
+  .frame-label.br{bottom:-11px; right:20px; background:var(--fog); padding:0 8px;}
+
+  .hero-eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .hero-eyebrow::before{
+    content:'';
+    width:34px; height:1px;
+    background:var(--gold);
+  }
+
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 5rem);
+    max-width:14ch;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--blue);
+    font-weight:450;
+  }
+
+  .hero-sub{
+    margin-top:26px;
+    max-width:46ch;
+    font-size:1.08rem;
+    color:#3c3a35;
+  }
+
+  .hero-actions{
+    margin-top:38px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .btn{
+    display:inline-block;
+    padding:14px 28px;
+    font-size:0.82rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    border-radius:2px;
+    transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .btn-primary:hover{background:var(--blue-deep); transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid var(--ink);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{background:var(--ink); color:var(--paper);}
+
+  .hero-meta{
+    margin-top:52px;
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    color:var(--line);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .hero-meta div span{
+    display:block;
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    font-size:0.95rem;
+    text-transform:none;
+    letter-spacing:0;
+    margin-top:4px;
+  }
+
+  /* ---------- section shell ---------- */
+  section{
+    padding:100px 0;
+    border-bottom:1px solid rgba(27,26,23,0.1);
+  }
+  .section-tag{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:16px;
+  }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+    margin-bottom:56px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.4vw, 2.7rem);
+  }
+  .section-head p{
+    max-width:38ch;
+    color:#4c4a44;
+    font-size:0.98rem;
+  }
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .about-portraits{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .portrait-slot{
+    aspect-ratio:3/4;
+    border:1px solid var(--ink);
+    background:var(--fog-dim);
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    padding:12px;
+  }
+  .portrait-slot .cap{
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--line);
+  }
+  .portrait-slot.shift{margin-top:34px;}
+  .portrait-slot img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .about-copy p{
+    margin-bottom:20px;
+    color:#3c3a35;
+    font-size:1rem;
+  }
+  .signature-line{
+    margin-top:32px;
+    padding-top:28px;
+    border-top:1px solid rgba(27,26,23,0.15);
+    display:flex;
+    gap:36px;
+    flex-wrap:wrap;
+  }
+  .sig{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.6rem;
+  }
+  .sig-role{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--line);
+    margin-top:2px;
+  }
+
+  /* ---------- gear note ---------- */
+  .gear-note{
+    margin-top:36px;
+    background:var(--blue);
+    color:var(--paper);
+    padding:26px 28px;
+    border-radius:2px;
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+  }
+  .gear-note svg{flex-shrink:0; margin-top:3px;}
+  .gear-note p{color:rgba(255,253,249,0.88); font-size:0.92rem; margin:0;}
+  .gear-note strong{color:var(--white); font-family:'Fraunces',serif; font-weight:600; display:block; margin-bottom:6px; font-size:1rem;}
+
+  /* ---------- services ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:rgba(27,26,23,0.15);
+    border:1px solid rgba(27,26,23,0.15);
+  }
+  .service-card{
+    background:var(--paper);
+    padding:38px 28px;
+    position:relative;
+  }
+  .service-num{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    color:var(--gold);
+    margin-bottom:22px;
+  }
+  .service-card h3{
+    font-size:1.25rem;
+    margin-bottom:12px;
+    font-weight:450;
+  }
+  .service-card p{
+    font-size:0.88rem;
+    color:#57544d;
+  }
+
+  @media (max-width:900px){
+    .services-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .services-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- contact sheet gallery ---------- */
+  .contact-sheet{
+    background:var(--ink);
+    padding:40px;
+    border-radius:2px;
+  }
+  .cs-head{
+    display:flex;
+    justify-content:space-between;
+    color:var(--fog);
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+    opacity:0.7;
+  }
+  .cs-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:12px;
+  }
+  .cs-frame{
+    aspect-ratio:1/1;
+    background:#2a2924;
+    position:relative;
+    border:1px solid #3b3a34;
+    overflow:hidden;
+  }
+  .cs-frame img{
+    width:100%; height:100%; object-fit:cover;
+    display:block;
+  }
+  .cs-frame .placeholder{
+    position:absolute; inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    color:#6d6b62;
+    font-family:'Space Mono', monospace;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    text-align:center;
+    padding:10px;
+  }
+  .cs-frame .frame-tag{
+    position:absolute;
+    bottom:6px; left:8px;
+    font-family:'Space Mono', monospace;
+    font-size:0.55rem;
+    color:rgba(237,234,226,0.55);
+  }
+  @media (max-width:760px){
+    .cs-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+
+  .swap-note{
+    margin-top:22px;
+    font-size:0.82rem;
+    color:#5c594f;
+    background:var(--fog-dim);
+    border:1px dashed var(--line);
+    padding:16px 18px;
+    border-radius:2px;
+  }
+  .swap-note code{
+    font-family:'Space Mono', monospace;
+    background:rgba(27,26,23,0.08);
+    padding:1px 6px;
+    border-radius:2px;
+  }
+
+  /* ---------- service area ---------- */
+  .area-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .radius-diagram{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .area-copy p{margin-bottom:18px; color:#3c3a35;}
+  .area-list{
+    margin-top:26px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px 24px;
+  }
+  .area-list li{
+    list-style:none;
+    font-size:0.88rem;
+    padding-left:16px;
+    position:relative;
+    color:#4c4a44;
+  }
+  .area-list li::before{
+    content:'';
+    position:absolute;
+    left:0; top:8px;
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--gold);
+  }
+
+  @media (max-width:820px){
+    .area-grid, .about-grid{grid-template-columns:1fr;}
+    .about-portraits{max-width:340px;}
+  }
+
+  /* ---------- packages ---------- */
+  .packages{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .package-card{
+    border:1px solid var(--ink);
+    padding:34px 30px;
+    background:var(--paper);
+    display:flex;
+    flex-direction:column;
+    height:100%;
+  }
+  .package-card.featured{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .package-card.featured .package-tag{color:var(--gold);}
+  .package-card.featured p{color:rgba(237,234,226,0.75);}
+  .package-tag{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--blue);
+  }
+  .package-card h3{
+    margin:14px 0 6px;
+    font-size:1.5rem;
+  }
+  .package-card p{
+    font-size:0.88rem;
+    color:#57544d;
+    margin-bottom:22px;
+  }
+  .package-list{
+    list-style:none;
+    margin-bottom:28px;
+    flex-grow:1;
+  }
+  .package-list li{
+    font-size:0.85rem;
+    padding:9px 0;
+    border-top:1px solid rgba(27,26,23,0.1);
+  }
+  .package-card.featured .package-list li{border-top:1px solid rgba(237,234,226,0.15);}
+  .package-list li:last-child{}
+
+  @media (max-width:900px){
+    .packages{grid-template-columns:1fr; max-width:440px; margin:0 auto;}
+  }
+
+  /* ---------- contact ---------- */
+  .contact-section{
+    background:var(--blue-deep);
+    color:var(--fog);
+    border-bottom:none;
+  }
+  .contact-section .section-tag{color:var(--gold);}
+  .contact-section .section-head p{color:rgba(237,234,226,0.72);}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+  }
+  .contact-details a, .contact-details div{
+    display:block;
+    margin-bottom:26px;
+  }
+  .contact-label{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6px;
+  }
+  .contact-value{
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+  }
+
+  .form-group{margin-bottom:18px;}
+  .form-group label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(237,234,226,0.65);
+    margin-bottom:8px;
+  }
+  .form-group input, .form-group textarea{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid rgba(237,234,226,0.35);
+    color:var(--fog);
+    padding:10px 2px;
+    font-family:'Archivo', sans-serif;
+    font-size:0.95rem;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder{color:rgba(237,234,226,0.35);}
+  .form-group input:focus, .form-group textarea:focus{
+    outline:none;
+    border-bottom-color:var(--gold);
+  }
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:600px){.form-row{grid-template-columns:1fr;} .contact-grid{grid-template-columns:1fr; gap:44px;}}
+
+  .submit-btn{
+    margin-top:8px;
+    background:var(--gold);
+    color:var(--ink);
+    border:none;
+    padding:14px 30px;
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    cursor:pointer;
+    border-radius:2px;
+    transition:background 0.2s ease;
+  }
+  .submit-btn:hover{background:#dab766;}
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(237,234,226,0.55);
+    padding:34px 0;
+    font-size:0.78rem;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .footer-inner .brand-mini{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--fog);
+    font-size:0.95rem;
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="sprocket-strip" aria-hidden="true" id="sprocketTop"></div>
+
+<header>
+  <nav>
+    <a href="#top" class="brand">Adalee <span class="amp">&amp;</span> Jackson</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#area">Service Area</a>
+      <a href="#packages">Packages</a>
+      <a href="#contact" class="nav-cta">Book a Session</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" style="border-bottom:1px solid rgba(27,26,23,0.1);">
+    <div class="wrap">
+      <div class="hero-frame">
+        <span class="frame-label tl">Roll 01 · Springfield</span>
+        <span class="frame-label tr" id="dateLabel">Est. 2026</span>
+        <p class="hero-eyebrow">Portrait &amp; Event Photography</p>
+        <h1>Two eyes.<br><em>One frame.</em></h1>
+        <p class="hero-sub">Adalee &amp; Jackson Photography is a new studio built on a few years of second-shooting real weddings and sessions around Springfield — now shooting under our own name, for you.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Book a Session</a>
+          <a href="#gallery" class="btn btn-ghost">View Our Work</a>
+        </div>
+        <div class="hero-meta">
+          <div>Based in<span>Springfield</span></div>
+          <div>Service radius<span>5 miles</span></div>
+          <div>Booking<span>Weekends &amp; weekdays</span></div>
+        </div>
+        <span class="frame-label br">002A / 24 · 50mm</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-portraits reveal">
+          <div class="portrait-slot">
+            <img src="images/IMG_3963.jpeg" alt="Portrait of Adalee" onerror="this.style.display='none'; this.parentElement.classList.add('empty');">
+            <span class="cap">Adalee</span>
+          </div>
+          <div class="portrait-slot shift">
+            <img src="images/IMG_5591.jpg" alt="Portrait of Jackson" onerror="this.style.display='none'; this.parentElement.classList.add('empty');">
+            <span class="cap">Jackson</span>
+          </div>
+        </div>
+        <div class="about-copy reveal">
+          <p class="section-tag">Roll 02 · About</p>
+          <h2 style="font-size:clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom:24px;">We learned by standing next to someone who already knew the light.</h2>
+          <p>Before this studio had a name, we were second shooters — the ones catching the reaction shot while the lead photographer worked the main angle, backing up the day's memory card by memory card. That's where we learned to read a room, move quietly through a ceremony, and get the frame nobody asked for but everybody wants later.</p>
+          <p>Now we're doing it under our own name. Adalee &amp; Jackson Photography is a Springfield-based studio built around portraits, engagements, and small events — shot by two people who still get genuinely excited about good light.</p>
+          <div class="signature-line">
+            <div>
+              <div class="sig">Adalee</div>
+              <div class="sig-role">Co-founder / Photographer</div>
+            </div>
+            <div>
+              <div class="sig">Jackson</div>
+              <div class="sig-role">Co-founder / Photographer</div>
+            </div>
+          </div>
+
+          <div class="gear-note">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="12" cy="14" r="4" stroke="#F7F5EF" stroke-width="1.4"/><path d="M8 7L9.5 4h5L16 7" stroke="#F7F5EF" stroke-width="1.4"/></svg>
+            <p><strong>Student-run, professionally equipped</strong>We're currently photography students, and we shoot with professional-grade cameras, lenses, and lighting through our university's media program — so you get studio-quality equipment without a studio-sized price tag.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-tag">Roll 03 · Services</p>
+          <h2>What we shoot</h2>
+        </div>
+        <p>Every session is shot by both of us where possible — one eye on the wide shot, one on the detail.</p>
+      </div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <h3>Portraits</h3>
+          <p>Solo, couples, and family portrait sessions on location or on campus grounds — golden hour recommended, not required.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <h3>Engagements</h3>
+          <p>A relaxed session built around how you two actually spend time together, not a checklist of poses.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <h3>Events</h3>
+          <p>Small gatherings, showers, and celebrations — candid coverage with a second-shooter's eye for the in-between moments.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <h3>Grad &amp; Senior</h3>
+          <p>Cap-and-gown and senior portrait sessions for fellow students — we know exactly how that season feels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-tag">Roll 04 · Gallery</p>
+          <h2>Contact sheet</h2>
+        </div>
+        <p>A working preview — swap in your own frames whenever you're ready.</p>
+      </div>
+
+      <div class="contact-sheet reveal">
+        <div class="cs-head">
+          <span>Adalee &amp; Jackson — Springfield</span>
+          <span id="rollLabel">Roll 24 · 35mm</span>
+        </div>
+        <div class="cs-grid">
+          <div class="cs-frame"><img src="images/gallery-01.jpg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">01</span></div>
+          <div class="cs-frame"><img src="images/gallery-02.jpg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">02</span></div>
+          <div class="cs-frame"><img src="images/gallery-03.jpg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">03</span></div>
+          <div class="cs-frame"><img src="images/gallery-04.jpg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">04</span></div>
+          <div class="cs-frame"><img src="images/gallery-05.jpeg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">05</span></div>
+          <div class="cs-frame"><img src="images/gallery-06.jpeg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">06</span></div>
+          <div class="cs-frame"><img src="images/gallery-07.jpeg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">07</span></div>
+          <div class="cs-frame"><img src="images/gallery-08.jpeg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">08</span></div>
+        </div>
+      </div>
+      <p class="swap-note">To add your own photos: create an <code>images</code> folder next to this file and drop your photos in, named to match what each frame expects — <code>images/adalee.jpg</code>, <code>images/jackson.jpg</code>, and <code>images/gallery-01.jpg</code> through <code>gallery-08.jpg</code>. Each frame will pick up your photo automatically once the file exists — no code editing needed. Add more frames anytime by copying a <code>.cs-frame</code> block.</p>
+    </div>
+  </section>
+
+  <!-- ================= SERVICE AREA ================= -->
+  <section id="area">
+    <div class="wrap">
+      <div class="area-grid">
+        <div class="area-copy reveal">
+          <p class="section-tag">Roll 05 · Where We Shoot</p>
+          <h2 style="font-size:clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom:20px;">Springfield, and about 5 miles out</h2>
+          <p>We're based in the Springfield area and currently keep our sessions within a 5-mile radius — close enough that we can scout the light beforehand and keep travel time out of your session.</p>
+          <p>Just outside the radius? Ask anyway — we take out-of-area sessions on a case-by-case basis.</p>
+          <ul class="area-list">
+            <li>Downtown Springfield</li>
+            <li>Campus &amp; surrounding blocks</li>
+            <li>Nearby parks &amp; trails</li>
+            <li>Your home or venue</li>
+          </ul>
+        </div>
+        <div class="radius-diagram reveal">
+          <svg width="360" height="360" viewBox="0 0 360 360" role="img" aria-label="Diagram showing a five mile service radius centered on Springfield">
+            <circle cx="180" cy="180" r="150" fill="none" stroke="#2C4562" stroke-width="1" stroke-dasharray="4 6" opacity="0.55"/>
+            <circle cx="180" cy="180" r="110" fill="none" stroke="#2C4562" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
+            <circle cx="180" cy="180" r="150" fill="none" stroke="#1B1A17" stroke-width="1.4"/>
+            <line x1="180" y1="30" x2="180" y2="330" stroke="#8A8578" stroke-width="0.6" opacity="0.4"/>
+            <line x1="30" y1="180" x2="330" y2="180" stroke="#8A8578" stroke-width="0.6" opacity="0.4"/>
+            <circle cx="180" cy="180" r="7" fill="#C9A24B"/>
+            <circle cx="180" cy="180" r="14" fill="none" stroke="#C9A24B" stroke-width="1"/>
+            <text x="180" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" fill="#1B1A17" letter-spacing="1">SPRINGFIELD</text>
+            <text x="180" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" fill="#2C4562" letter-spacing="1">5 MI RADIUS</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PACKAGES ================= -->
+  <section id="packages">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-tag">Roll 06 · Packages</p>
+          <h2>Session options</h2>
+        </div>
+        <p>General starting points — every package can flex to fit what you actually need.</p>
+      </div>
+      <div class="packages reveal">
+        <div class="package-card">
+          <p class="package-tag">Mini</p>
+          <h3>The Quick Roll</h3>
+          <p>A short, focused session — great for updated headshots or a simple portrait set.</p>
+          <ul class="package-list">
+            <li>30-minute session</li>
+            <li>One location</li>
+            <li>Edited digital gallery</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost" style="text-align:center;">Ask About This</a>
+        </div>
+        <div class="package-card featured">
+          <p class="package-tag">Standard</p>
+          <h3>The Full Roll</h3>
+          <p>Our most-booked session — enough time to relax into it and get real variety.</p>
+          <ul class="package-list">
+            <li>60–90 minute session</li>
+            <li>One or two locations</li>
+            <li>Full edited gallery</li>
+            <li>Print-ready &amp; web-ready files</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" style="text-align:center; background:var(--gold); color:var(--ink);">Book This</a>
+        </div>
+        <div class="package-card">
+          <p class="package-tag">Extended</p>
+          <h3>The Full Story</h3>
+          <p>For events and longer coverage — both of us shooting, so nothing gets missed.</p>
+          <ul class="package-list">
+            <li>Up to 4 hours coverage</li>
+            <li>Both photographers on site</li>
+            <li>Full edited gallery</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost" style="text-align:center;">Ask About This</a>
+        </div>
+      </div>
+      <p class="swap-note" style="margin-top:36px;">Package details and pricing above are placeholders — swap in your actual rates and inclusions whenever you've settled on them.</p>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="contact-section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-tag">Roll 07 · Contact</p>
+          <h2>Let's book your session</h2>
+        </div>
+        <p>Tell us the date, the vibe, and roughly where — we'll take it from there.</p>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="contact-details">
+          <div>
+            <p class="contact-label">Email</p>
+            <a href="mailto:gavr410575@evangel.edu" class="contact-value">gavr410575@evangel.edu</a>
+          </div>
+          <div>
+            <p class="contact-label">Phone</p>
+            <a href="tel:+10000000000" class="contact-value">(000) 000-0000</a>
+          </div>
+          <div>
+            <p class="contact-label">Instagram</p>
+            <a href="#" class="contact-value">@adaleejacksonphoto</a>
+          </div>
+          <div>
+            <p class="contact-label">Service Area</p>
+            <div class="contact-value" style="font-size:1.1rem;">Springfield · 5-mile radius</div>
+          </div>
+        </div>
+        <form id="bookingForm" onsubmit="return handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Name</label>
+              <input type="text" id="fname" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="femail">Email</label>
+              <input type="email" id="femail" placeholder="you@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fdate">Preferred date</label>
+              <input type="date" id="fdate">
+            </div>
+            <div class="form-group">
+              <label for="ftime">Preferred time</label>
+              <input type="time" id="ftime" value="12:00">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ftype">Session type</label>
+              <input type="text" id="ftype" placeholder="Portrait, engagement...">
+            </div>
+            <div class="form-group">
+              <label for="fduration">Length (minutes)</label>
+              <input type="number" id="fduration" value="60" min="15" step="15">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fmsg">Tell us a bit about it</label>
+            <textarea id="fmsg" rows="3" placeholder="Location ideas, timing, anything on your mind"></textarea>
+          </div>
+          <p id="availabilityNote" class="mono" style="font-size:0.68rem; color:var(--gold); display:none; margin-bottom:14px;"></p>
+          <button type="submit" class="submit-btn">Send Inquiry</button>
+          <p id="formNote" class="mono" style="margin-top:14px; font-size:0.68rem; color:rgba(237,234,226,0.7); display:none;"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="brand-mini">Adalee &amp; Jackson Photography</span>
+    <span>&copy; <span id="year"></span> · Springfield, serving a 5-mile radius</span>
+  </div>
+</footer>
+
+<div class="sprocket-strip" aria-hidden="true" id="sprocketBottom"></div>
+
+<script>
+  // sprocket holes
+  function fillSprockets(id, count){
+    const el = document.getElementById(id);
+    for(let i=0;i<count;i++){
+      const s = document.createElement('span');
+      el.appendChild(s);
+    }
+  }
+  fillSprockets('sprocketTop', 40);
+  fillSprockets('sprocketBottom', 40);
+
+  // mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+  }));
+
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // empty portrait slot styling fallback
+  document.querySelectorAll('.portrait-slot.empty, .portrait-slot').forEach(slot => {
+    const img = slot.querySelector('img');
+    if(img && img.style.display === 'none'){
+      slot.style.display = 'flex';
+    }
+  });
+
+  // ---- Apple Calendar (CalDAV) integration --------------------------------
+  // Point this at your deployed backend from /server (see server/README.md).
+  // Leave as-is and the booking form will just show a friendly note instead
+  // of erroring out.
+  const API_BASE_URL = "https://photo-business-bookings.onrender.com";
+  const CALDAV_CONNECTED = !API_BASE_URL.includes("your-backend-url");
+
+  // Build a downloadable .ics file so ANY visitor can add the session to
+  // their own calendar (Apple, Google, Outlook — all read .ics). This part
+  // needs no backend at all.
+  function buildICSFile({ summary, description, dateStr, timeStr, duration }){
+    const [y, m, d] = dateStr.split('-');
+    const [hh, mm] = (timeStr || '12:00').split(':');
+    const pad = n => String(n).padStart(2,'0');
+    const start = new Date(`${y}-${m}-${d}T${hh}:${mm}:00`);
+    const end = new Date(start.getTime() + (Number(duration) || 60) * 60000);
+    const fmt = dt => `${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
+    const ics = [
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Adalee and Jackson Photography//Booking//EN',
+      'BEGIN:VEVENT',
+      `UID:${Date.now()}@adaleejacksonphoto`,
+      `DTSTAMP:${fmt(new Date())}Z`,
+      `DTSTART:${fmt(start)}`,
+      `DTEND:${fmt(end)}`,
+      `SUMMARY:${summary}`,
+      `DESCRIPTION:${(description||'').replace(/\n/g,'\\n')}`,
+      'END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    const blob = new Blob([ics], { type: 'text/calendar' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'session-booking.ics';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  // Check the studio's real Apple Calendar availability for the chosen date.
+  let availabilityTimer;
+  let dateIsBlocked = false;
+  async function checkAvailability(){
+    const note = document.getElementById('availabilityNote');
+    const submitBtn = document.querySelector('#bookingForm .submit-btn');
+    const date = document.getElementById('fdate').value;
+    dateIsBlocked = false;
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = '1';
+    if(!date || !CALDAV_CONNECTED){ note.style.display = 'none'; return; }
+    clearTimeout(availabilityTimer);
+    availabilityTimer = setTimeout(async () => {
+      try{
+        const res = await fetch(`${API_BASE_URL}/api/availability?date=${date}`);
+        const data = await res.json();
+        if(data.busyCount > 0){
+          dateIsBlocked = true;
+          note.textContent = "That date is already booked — please choose a different date.";
+          note.style.color = '#d97757';
+          note.style.display = 'block';
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = '0.5';
+        } else {
+          note.style.display = 'none';
+        }
+      }catch(err){
+        note.style.display = 'none';
+      }
+    }, 400);
+  }
+  document.getElementById('fdate')?.addEventListener('change', checkAvailability);
+
+  async function handleSubmit(e){
+    e.preventDefault();
+    const note = document.getElementById('formNote');
+
+    if(dateIsBlocked){
+      note.textContent = "That date isn't available — please pick a different one.";
+      note.style.display = 'block';
+      return false;
+    }
+
+    const payload = {
+      name: document.getElementById('fname').value,
+      email: document.getElementById('femail').value,
+      date: document.getElementById('fdate').value,
+      time: document.getElementById('ftime').value,
+      duration: document.getElementById('fduration').value,
+      type: document.getElementById('ftype').value,
+      message: document.getElementById('fmsg').value,
+    };
+
+    // Always give the visitor an .ics they can add to their own calendar.
+    if(payload.date){
+      buildICSFile({
+        summary: `${payload.type || 'Photography session'} — Adalee & Jackson Photography`,
+        description: `Requested by ${payload.name}\n${payload.message || ''}`,
+        dateStr: payload.date,
+        timeStr: payload.time,
+        duration: payload.duration,
+      });
+    }
+
+    if(!CALDAV_CONNECTED){
+      note.textContent = "Thanks! This is saved to your calendar as a download. (Live booking sync isn't connected yet — see server/README.md.)";
+      note.style.display = 'block';
+      return false;
+    }
+
+    note.textContent = "Sending...";
+    note.style.display = 'block';
+    try{
+      const res = await fetch(`${API_BASE_URL}/api/book`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if(res.ok){
+        note.textContent = "Booked! We've added it to our calendar and will follow up by email.";
+        document.getElementById('bookingForm').reset();
+      } else {
+        note.textContent = data.error || "Something went wrong sending that — try again or email us directly.";
+      }
+    }catch(err){
+      note.textContent = "Couldn't reach the booking server — try again or email us directly.";
+    }
+    return false;
+  }
+</script>
+
+</body>
+</html>

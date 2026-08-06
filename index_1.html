@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adalee &amp; Jackson Photography — Springfield</title>
-<meta name="description" content="Adalee & Jackson Photography — portrait, engagement, and event photography serving Springfield and the surrounding 5-mile area.">
+<title>Triple Frame Photography</title>
+<meta name="description" content="Triple Frame Photography — portrait, engagement, and event photography serving Springfield and the surrounding 5-mile area.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -83,32 +83,62 @@
     z-index:50;
     background:var(--fog);
     border-bottom:1px solid rgba(27,26,23,0.12);
+    transition:transform 0.28s ease, box-shadow 0.28s ease;
+    will-change:transform;
+  }
+  header.header-hidden{
+    transform:translateY(-100%);
+  }
+  header.header-compact{
+    box-shadow:0 10px 24px rgba(27,26,23,0.08);
   }
   nav{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:18px 32px;
+    padding:8px 32px;
     max-width:1180px;
     margin:0 auto;
   }
   .brand{
-    font-family:'Fraunces', serif;
-    font-size:1.25rem;
-    font-weight:600;
     display:flex;
     align-items:baseline;
-    gap:8px;
+    gap:7px;
+    padding:0;
+    background:none;
+    border:none;
+    box-shadow:none;
   }
-  .brand .amp{color:var(--blue); font-style:italic; font-weight:450;}
+  .brand-wordmark{
+    font-family:'Fraunces', serif;
+    font-size:1.18rem;
+    font-weight:600;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .brand-wordmark .accent{
+    color:var(--blue);
+    font-style:italic;
+    font-weight:450;
+  }
+  .brand-wordmark .small{
+    color:#4c4a44;
+    font-size:0.72em;
+    font-weight:450;
+    margin-left:2px;
+  }
+  .brand-wordmark-mobile{
+    display:none;
+  }
   .nav-links{
     display:flex;
-    gap:34px;
-    font-size:0.82rem;
+    align-items:center;
+    gap:24px;
+    font-size:0.8rem;
   }
   .nav-links a{
     position:relative;
-    padding-bottom:4px;
+    padding-bottom:2px;
     color:var(--ink);
   }
   .nav-links a::after{
@@ -133,6 +163,10 @@
   .nav-toggle{display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--ink);}
 
   @media (max-width:820px){
+    nav{padding:8px 24px;}
+    .brand-wordmark{font-size:1.05rem;}
+    .brand-wordmark-full{display:none;}
+    .brand-wordmark-mobile{display:inline;}
     .nav-links{
       position:absolute;
       top:100%; left:0; right:0;
@@ -163,6 +197,20 @@
     background:
       linear-gradient(180deg, rgba(44,69,98,0.05), transparent 40%),
       var(--paper);
+  }
+  .hero-frame > :not(.hero-logo){
+    position:relative;
+    z-index:1;
+  }
+  .hero-logo{
+    position:absolute;
+    top:50%;
+    left:calc(62% + 100px);
+    width:500px;
+    height:500px;
+    object-fit:contain;
+    z-index:0;
+    transform:translate(-50%, -50%);
   }
   .frame-label{
     position:absolute;
@@ -247,6 +295,20 @@
     text-transform:uppercase;
     letter-spacing:0.08em;
   }
+
+  @media (max-width:900px){
+    .hero-frame{padding:42px 28px;}
+    .hero-logo{
+      position:relative;
+      top:auto;
+      left:auto;
+      display:block;
+      width:210px;
+      height:210px;
+      margin:-22px auto 18px;
+      transform:none;
+    }
+  }
   .hero-meta div span{
     display:block;
     color:var(--ink);
@@ -294,61 +356,64 @@
     gap:64px;
     align-items:start;
   }
-  .about-portraits{
+  .profile-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:30px;
   }
-  .portrait-slot{
-    aspect-ratio:3/4;
-    border:1px solid var(--ink);
-    background:var(--fog-dim);
-    position:relative;
+  .profile-card{
     display:flex;
-    align-items:flex-end;
-    padding:12px;
+    flex-direction:column;
+    border:1px solid rgba(27,26,23,0.12);
+    border-radius:2px;
+    overflow:hidden;
+    background:var(--paper);
+    text-decoration:none;
+    color:inherit;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
   }
-  .portrait-slot .cap{
-    font-family:'Space Mono', monospace;
-    font-size:0.62rem;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    color:var(--line);
+  .profile-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 24px 40px rgba(27,26,23,0.08);
   }
-  .portrait-slot.shift{margin-top:34px;}
-  .portrait-slot img{
-    position:absolute;
-    inset:0;
+  .profile-image{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    background:var(--fog-dim);
+  }
+  .profile-image img{
     width:100%;
     height:100%;
     object-fit:cover;
+    display:block;
+    transition:transform 0.4s ease;
   }
-
-  .about-copy p{
-    margin-bottom:20px;
-    color:#3c3a35;
-    font-size:1rem;
+  .profile-card:hover .profile-image img{
+    transform:scale(1.04);
   }
-  .signature-line{
-    margin-top:32px;
-    padding-top:28px;
-    border-top:1px solid rgba(27,26,23,0.15);
+  .profile-copy{
+    padding:28px 24px;
     display:flex;
-    gap:36px;
-    flex-wrap:wrap;
+    flex-direction:column;
+    gap:10px;
   }
-  .sig{
+  .profile-name{
     font-family:'Fraunces', serif;
-    font-style:italic;
-    font-size:1.6rem;
+    font-size:1.85rem;
+    line-height:1.05;
   }
-  .sig-role{
+  .profile-role{
     font-family:'Space Mono', monospace;
-    font-size:0.68rem;
-    letter-spacing:0.08em;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
     text-transform:uppercase;
     color:var(--line);
-    margin-top:2px;
+  }
+  .profile-description{
+    font-size:0.97rem;
+    color:#3c3a35;
+    line-height:1.65;
   }
 
   /* ---------- gear note ---------- */
@@ -663,6 +728,16 @@
     font-style:italic;
     color:var(--fog);
     font-size:0.95rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .footer-inner .brand-mini img{
+    width:32px;
+    height:32px;
+    object-fit:contain;
+    display:block;
+    flex-shrink:0;
   }
 
   /* ---------- reveal on scroll ---------- */
@@ -678,6 +753,95 @@
     outline:2px solid var(--gold);
     outline-offset:2px;
   }
+
+  @media (max-width:600px){
+    .wrap{padding:0 18px;}
+    nav{padding:8px 18px;}
+    .brand-wordmark{font-size:0.98rem;}
+    .nav-toggle{font-size:1.45rem;}
+
+    section{padding:64px 0;}
+    .hero{padding:46px 0 54px;}
+    .hero-frame{padding:34px 22px;}
+    .hero-logo{
+      position:relative;
+      top:auto;
+      left:auto;
+      display:block;
+      width:min(260px, 78vw);
+      height:min(260px, 78vw);
+      margin:-20px auto 12px;
+      transform:none;
+    }
+    .frame-label{font-size:0.58rem;}
+    .frame-label.tr{display:none;}
+    .hero-eyebrow{
+      font-size:0.62rem;
+      gap:8px;
+      margin-bottom:16px;
+    }
+    .hero-eyebrow::before{width:22px;}
+    .hero h1{font-size:clamp(2.25rem, 14vw, 3.35rem);}
+    .hero-sub{
+      margin-top:18px;
+      font-size:0.98rem;
+      max-width:none;
+    }
+    .hero-actions{
+      margin-top:28px;
+      gap:8px;
+      flex-wrap:nowrap;
+      align-items:center;
+    }
+    .btn{
+      flex:1 1 0;
+      padding:12px 10px;
+      text-align:center;
+      font-size:0.66rem;
+    }
+    .hero-meta{
+      margin-top:34px;
+      gap:18px;
+      display:grid;
+      grid-template-columns:1fr;
+    }
+
+    .section-head{
+      gap:14px;
+      margin-bottom:34px;
+    }
+    .section-head h2,
+    .about-copy h2,
+    .area-copy h2{
+      font-size:clamp(1.8rem, 9vw, 2.35rem) !important;
+    }
+    .about-portraits{
+      max-width:none;
+      gap:10px;
+    }
+    .portrait-slot.shift{margin-top:22px;}
+    .services-grid{grid-template-columns:1fr;}
+    .service-card{padding:30px 24px;}
+    .contact-sheet{padding:20px;}
+    .cs-head{
+      gap:10px;
+      flex-direction:column;
+    }
+    .area-list{grid-template-columns:1fr;}
+    .radius-diagram svg{
+      width:min(300px, 86vw);
+      height:auto;
+    }
+    .package-card{padding:28px 24px;}
+    .contact-value{
+      font-size:clamp(1.05rem, 5.8vw, 1.3rem);
+      overflow-wrap:anywhere;
+    }
+    .footer-inner{
+      align-items:flex-start;
+      flex-direction:column;
+    }
+  }
 </style>
 </head>
 <body>
@@ -686,10 +850,15 @@
 
 <header>
   <nav>
-    <a href="#top" class="brand">Adalee <span class="amp">&amp;</span> Jackson</a>
+    <a href="#top" class="brand" aria-label="Triple Frame Photography">
+      <span class="brand-wordmark">
+        <span class="brand-wordmark-full">Triple <span class="accent">Frame</span> <span class="small">Photography</span></span>
+        <span class="brand-wordmark-mobile">Triple <span class="accent">Frame</span></span>
+      </span>
+    </a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
     <div class="nav-links" id="navLinks">
-      <a href="#about">About</a>
+      <a href="#photographers">Photographers</a>
       <a href="#services">Services</a>
       <a href="#gallery">Gallery</a>
       <a href="#area">Service Area</a>
@@ -705,11 +874,12 @@
   <section class="hero" style="border-bottom:1px solid rgba(27,26,23,0.1);">
     <div class="wrap">
       <div class="hero-frame">
+        <img src="images/triple-frame-logo-transparent.png" alt="Triple Frame Photography logo" class="hero-logo">
         <span class="frame-label tl">Roll 01 · Springfield</span>
         <span class="frame-label tr" id="dateLabel">Est. 2026</span>
         <p class="hero-eyebrow">Portrait &amp; Event Photography</p>
-        <h1>Two eyes.<br><em>One frame.</em></h1>
-        <p class="hero-sub">Adalee &amp; Jackson Photography is a new studio built on a few years of second-shooting real weddings and sessions around Springfield — now shooting under our own name, for you.</p>
+        <h1>Three perspectives.<br><em>One story.</em></h1>
+        <p class="hero-sub">Triple Frame Photography is a small student owned and operated business that aims to deliver an exceptional experience by capturing creative ideas worth framing. Our goal is to meet every client with more that what they expect and deliver an experience that doesn't just speak to skill, rather one that shows a drive for excellence.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">Book a Session</a>
           <a href="#gallery" class="btn btn-ghost">View Our Work</a>
@@ -717,48 +887,57 @@
         <div class="hero-meta">
           <div>Based in<span>Springfield</span></div>
           <div>Service radius<span>5 miles</span></div>
-          <div>Booking<span>Weekends &amp; weekdays</span></div>
+          <div>Booking<span>Weekends &amp; Weekdays</span></div>
         </div>
         <span class="frame-label br">002A / 24 · 50mm</span>
       </div>
     </div>
   </section>
 
-  <!-- ================= ABOUT ================= -->
-  <section id="about">
+  <!-- ================= PHOTOGRAPHERS ================= -->
+  <section id="photographers">
     <div class="wrap">
-      <div class="about-grid">
-        <div class="about-portraits reveal">
-          <div class="portrait-slot">
-            <img src="images/IMG_3963.jpeg" alt="Portrait of Adalee" onerror="this.style.display='none'; this.parentElement.classList.add('empty');">
-            <span class="cap">Adalee</span>
-          </div>
-          <div class="portrait-slot shift">
-            <img src="images/IMG_5591.jpg" alt="Portrait of Jackson" onerror="this.style.display='none'; this.parentElement.classList.add('empty');">
-            <span class="cap">Jackson</span>
-          </div>
+      <div class="section-head reveal">
+        <div>
+          <p class="section-tag">Roll 02 · Photographers</p>
+          <h2>Meet the photographers behind the frames</h2>
         </div>
-        <div class="about-copy reveal">
-          <p class="section-tag">Roll 02 · About</p>
-          <h2 style="font-size:clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom:24px;">We learned by standing next to someone who already knew the light.</h2>
-          <p>Before this studio had a name, we were second shooters — the ones catching the reaction shot while the lead photographer worked the main angle, backing up the day's memory card by memory card. That's where we learned to read a room, move quietly through a ceremony, and get the frame nobody asked for but everybody wants later.</p>
-          <p>Now we're doing it under our own name. Adalee &amp; Jackson Photography is a Springfield-based studio built around portraits, engagements, and small events — shot by two people who still get genuinely excited about good light.</p>
-          <div class="signature-line">
-            <div>
-              <div class="sig">Adalee</div>
-              <div class="sig-role">Co-founder / Photographer</div>
-            </div>
-            <div>
-              <div class="sig">Jackson</div>
-              <div class="sig-role">Co-founder / Photographer</div>
-            </div>
-          </div>
+        <p>Each profile links to a separate page with that photographer’s shooting style, creative approach, and personal story.</p>
+      </div>
 
-          <div class="gear-note">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="12" cy="14" r="4" stroke="#F7F5EF" stroke-width="1.4"/><path d="M8 7L9.5 4h5L16 7" stroke="#F7F5EF" stroke-width="1.4"/></svg>
-            <p><strong>Student-run, professionally equipped</strong>We're currently photography students, and we shoot with professional-grade cameras, lenses, and lighting through our university's media program — so you get studio-quality equipment without a studio-sized price tag.</p>
+      <div class="profile-grid reveal">
+        <a href="profile-photographer-a.html" class="profile-card">
+          <div class="profile-image">
+            <img src="images/IMG_3963.jpeg" alt="Photographer A portrait">
           </div>
-        </div>
+          <div class="profile-copy">
+            <span class="profile-name">Adalee Deese</span>
+            <span class="profile-role">Portrait + Engagement Specialist</span>
+            <p class="profile-description">A thoughtful visual storyteller who brings a calm, natural energy to every session and makes clients feel seen in their best light.</p>
+          </div>
+        </a>
+
+        <a href="profile-photographer-b.html" class="profile-card">
+          <div class="profile-image">
+            <img src="images/IMG_5591.jpg" alt="Photographer B portrait">
+          </div>
+          <div class="profile-copy">
+            <span class="profile-name">Jackson Gavril</span>
+            <span class="profile-role">Events + Editorial Storyteller</span>
+            <p class="profile-description">An observant shooter who captures the unscripted moments, the quiet gestures, and the emotions that make each story unique.</p>
+          </div>
+        </a>
+
+        <a href="profile-photographer-c.html" class="profile-card">
+          <div class="profile-image">
+            <img src="images/IMG_6814.jpg" alt="Photographer C portrait">
+          </div>
+          <div class="profile-copy">
+            <span class="profile-name">Josiah Adams</span>
+            <span class="profile-role">Creative + Lifestyle Photographer</span>
+            <p class="profile-description">A bold visual thinker who blends modern composition with playful direction to create images that feel cinematic and real.</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -811,7 +990,7 @@
 
       <div class="contact-sheet reveal">
         <div class="cs-head">
-          <span>Adalee &amp; Jackson — Springfield</span>
+          <span>Triple Frame Photography — Springfield</span>
           <span id="rollLabel">Roll 24 · 35mm</span>
         </div>
         <div class="cs-grid">
@@ -825,8 +1004,7 @@
           <div class="cs-frame"><img src="images/gallery-08.jpeg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">08</span></div>
         </div>
       </div>
-      <p class="swap-note">To add your own photos: create an <code>images</code> folder next to this file and drop your photos in, named to match what each frame expects — <code>images/adalee.jpg</code>, <code>images/jackson.jpg</code>, and <code>images/gallery-01.jpg</code> through <code>gallery-08.jpg</code>. Each frame will pick up your photo automatically once the file exists — no code editing needed. Add more frames anytime by copying a <code>.cs-frame</code> block.</p>
-    </div>
+</div>
   </section>
 
   <!-- ================= SERVICE AREA ================= -->
@@ -934,7 +1112,7 @@
           </div>
           <div>
             <p class="contact-label">Instagram</p>
-            <a href="#" class="contact-value">@adaleejacksonphoto</a>
+            <a href="#" class="contact-value">@tripleframephoto</a>
           </div>
           <div>
             <p class="contact-label">Service Area</p>
@@ -988,7 +1166,7 @@
 
 <footer>
   <div class="wrap footer-inner">
-    <span class="brand-mini">Adalee &amp; Jackson Photography</span>
+    <span class="brand-mini"><img src="images/triple-frame-logo.png" alt="Triple Frame Photography logo"><span>Triple Frame Photography</span></span>
     <span>&copy; <span id="year"></span> · Springfield, serving a 5-mile radius</span>
   </div>
 </footer>
@@ -1008,16 +1186,37 @@
   fillSprockets('sprocketBottom', 40);
 
   // mobile nav
+  const siteHeader = document.querySelector('header');
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', isOpen);
+    siteHeader.classList.remove('header-hidden');
   });
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     navLinks.classList.remove('open');
     navToggle.setAttribute('aria-expanded', false);
   }));
+
+  // hide header while scrolling down, show it again while scrolling up
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    const menuIsOpen = navLinks.classList.contains('open');
+
+    siteHeader.classList.toggle('header-compact', currentScrollY > 12);
+
+    if(menuIsOpen || currentScrollY < 80){
+      siteHeader.classList.remove('header-hidden');
+    } else if(currentScrollY > lastScrollY + 6){
+      siteHeader.classList.add('header-hidden');
+    } else if(currentScrollY < lastScrollY - 6){
+      siteHeader.classList.remove('header-hidden');
+    }
+
+    lastScrollY = Math.max(currentScrollY, 0);
+  }, { passive:true });
 
   // year
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -1060,9 +1259,9 @@
     const end = new Date(start.getTime() + (Number(duration) || 60) * 60000);
     const fmt = dt => `${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
     const ics = [
-      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Adalee and Jackson Photography//Booking//EN',
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Triple Frame Photography//Booking//EN',
       'BEGIN:VEVENT',
-      `UID:${Date.now()}@adaleejacksonphoto`,
+      `UID:${Date.now()}@tripleframephoto`,
       `DTSTAMP:${fmt(new Date())}Z`,
       `DTSTART:${fmt(start)}`,
       `DTEND:${fmt(end)}`,
@@ -1137,7 +1336,7 @@
     // Always give the visitor an .ics they can add to their own calendar.
     if(payload.date){
       buildICSFile({
-        summary: `${payload.type || 'Photography session'} — Adalee & Jackson Photography`,
+        summary: `${payload.type || 'Photography session'} — Triple Frame Photography`,
         description: `Requested by ${payload.name}\n${payload.message || ''}`,
         dateStr: payload.date,
         timeStr: payload.time,

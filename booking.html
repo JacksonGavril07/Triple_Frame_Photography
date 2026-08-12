@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  /* Reused theme styles from index_1.html (kept minimal copy for consistency) */
+  /* Reused theme styles from index.html (kept minimal copy for consistency) */
   :root{ --ink:#1B1A17; --fog:#EDEAE2; --paper:#F7F5EF; --blue:#2C4562; --gold:#C9A24B; }
   *{margin:0;padding:0;box-sizing:border-box;} body{background:var(--fog);color:var(--ink);font-family:'Archivo',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
@@ -45,15 +45,15 @@
 
 <header>
   <nav>
-    <a href="index_1.html#top" class="brand" aria-label="Triple Frame Photography">
+    <a href="index.html#top" class="brand" aria-label="Triple Frame Photography">
       <span class="brand-wordmark">Triple <span style="color:var(--blue)">Frame</span> Photography</span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="index_1.html#photographers">Photographers</a>
-      <a href="index_1.html#services">Services</a>
-      <a href="index_1.html#gallery">Gallery</a>
-      <a href="index_1.html#area">Service Area</a>
-      <a href="index_1.html#packages">Packages</a>
+      <a href="photographers.html">Photographers</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#area">Service Area</a>
+      <a href="index.html#packages">Packages</a>
       <a href="booking.html" class="nav-cta">Book a Session</a>
     </div>
   </nav>
@@ -154,7 +154,7 @@
 <div class="sprocket-strip" aria-hidden="true" id="sprocketBottom"></div>
 
 <script>
-  // minimal scripts copied from index_1.html for booking functionality
+  // minimal scripts copied from index.html for booking functionality
   function fillSprockets(id, count){ const el=document.getElementById(id); for(let i=0;i<count;i++){ const s=document.createElement('span'); el.appendChild(s);} }
   fillSprockets('sprocketTop',40); fillSprockets('sprocketBottom',40);
   document.getElementById('year').textContent = new Date().getFullYear();

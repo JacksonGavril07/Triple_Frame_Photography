@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photographers - Triple Frame Photography</title>
+<meta name="description" content="Meet the Triple Frame Photography team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1A17;
+    --fog:#EDEAE2;
+    --fog-dim:#E2DFD5;
+    --paper:#F7F5EF;
+    --blue:#2C4562;
+    --blue-deep:#1E2F42;
+    --gold:#C9A24B;
+    --line:#8A8578;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--fog);
+    color:var(--ink);
+    font-family:'Archivo',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px;}
+  .sprocket-strip{
+    position:sticky;
+    top:0;
+    z-index:20;
+    height:22px;
+    background-color:var(--ink);
+    background-image:linear-gradient(90deg,var(--fog) 0 9px,transparent 9px 34px);
+    background-size:34px 9px;
+    background-position:center;
+  }
+  header{
+    position:sticky;
+    top:22px;
+    z-index:15;
+    background:var(--fog);
+    border-bottom:1px solid rgba(27,26,23,0.12);
+  }
+  nav{
+    min-height:54px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:8px 22px;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-size:1rem;
+    font-weight:600;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .brand .accent{color:var(--blue);font-style:italic;font-weight:450;}
+  .nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Space Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+  .nav-actions a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:34px;
+    padding:0 12px;
+    border:1px solid rgba(27,26,23,0.2);
+    border-radius:2px;
+    background:var(--paper);
+  }
+  .nav-actions .book{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  main{padding:44px 0 68px;}
+  .page-head{
+    margin-bottom:34px;
+    border-bottom:1px solid rgba(27,26,23,0.14);
+    padding-bottom:26px;
+  }
+  .section-tag{
+    font-family:'Space Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-size:clamp(2.25rem,12vw,3.6rem);
+    font-weight:450;
+    line-height:1.04;
+    letter-spacing:0;
+    max-width:9ch;
+  }
+  .intro{
+    margin-top:18px;
+    max-width:58ch;
+    color:#3c3a35;
+    font-size:1rem;
+  }
+  .profile-list{
+    display:grid;
+    gap:22px;
+  }
+  .profile-card{
+    display:grid;
+    grid-template-columns:minmax(112px,34%) 1fr;
+    min-height:190px;
+    border:1px solid rgba(27,26,23,0.14);
+    border-radius:2px;
+    overflow:hidden;
+    background:var(--paper);
+  }
+  .profile-image{
+    min-height:190px;
+    background:var(--fog-dim);
+  }
+  .profile-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .profile-copy{
+    padding:20px 18px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:9px;
+  }
+  .profile-name{
+    font-family:'Fraunces',serif;
+    font-size:clamp(1.65rem,8vw,2.2rem);
+    line-height:1.05;
+    letter-spacing:0;
+  }
+  .profile-role{
+    font-family:'Space Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    line-height:1.45;
+    text-transform:uppercase;
+    color:var(--blue);
+  }
+  .profile-description{
+    color:#35332e;
+    font-size:0.98rem;
+    line-height:1.62;
+  }
+  .profile-link{
+    margin-top:5px;
+    align-self:flex-start;
+    font-family:'Space Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--blue-deep);
+    border-bottom:1px solid var(--gold);
+  }
+  .book-strip{
+    margin-top:30px;
+    padding:22px;
+    background:var(--blue-deep);
+    color:var(--paper);
+    border-radius:2px;
+  }
+  .book-strip p{color:rgba(247,245,239,0.82);font-size:0.95rem;margin-bottom:16px;}
+  .book-strip a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:42px;
+    padding:0 18px;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    border-radius:2px;
+  }
+  a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  @media (max-width:620px){
+    .wrap{padding:0 18px;}
+    nav{padding:8px 18px;}
+    .nav-actions{gap:8px;font-size:0.62rem;}
+    .nav-actions a{padding:0 10px;}
+    main{padding-top:36px;}
+    .page-head{margin-bottom:26px;}
+    .profile-list{gap:18px;}
+    .profile-card{
+      grid-template-columns:1fr;
+      min-height:0;
+    }
+    .profile-image{
+      aspect-ratio:4/3;
+      min-height:0;
+    }
+    .profile-copy{padding:22px 20px 24px;}
+    .profile-role{font-size:0.66rem;}
+    .profile-description{font-size:1rem;}
+  }
+</style>
+</head>
+<body>
+  <div class="sprocket-strip" aria-hidden="true"></div>
+  <header>
+    <nav>
+      <a href="index.html" class="brand" aria-label="Triple Frame Photography">Triple <span class="accent">Frame</span></a>
+      <div class="nav-actions">
+        <a href="index.html">Home</a>
+        <a href="booking.html" class="book">Book</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="page-head" aria-labelledby="photographers-title">
+        <p class="section-tag">Roll 02 &middot; Photographers</p>
+        <h1 id="photographers-title">Meet the photographers</h1>
+        <p class="intro">Three shooters, three points of view, and one shared goal: make each session feel natural, thoughtful, and worth framing.</p>
+      </section>
+
+      <section class="profile-list" aria-label="Photographer profiles">
+        <a href="profile-photographer-a.html" class="profile-card">
+          <div class="profile-image">
+            <img src="images/IMG_3963.jpeg" alt="Adalee Deese portrait">
+          </div>
+          <div class="profile-copy">
+            <span class="profile-name">Adalee Deese</span>
+            <span class="profile-role">Portrait + Engagement Specialist</span>
+            <p class="profile-description">A thoughtful visual storyteller who brings a calm, natural energy to every session and makes clients feel seen in their best light.</p>
+            <span class="profile-link">View profile</span>
+          </div>
+        </a>
+
+        <a href="profile-photographer-b.html" class="profile-card">
+          <div class="profile-image">
+            <img src="images/IMG_5591.jpg" alt="Jackson Gavril portrait">
+          </div>
+          <div class="profile-copy">
+            <span class="profile-name">Jackson Gavril</span>
+            <span class="profile-role">Events + Editorial Storyteller</span>
+            <p class="profile-description">An observant shooter who captures the unscripted moments, quiet gestures, and emotions that make each story unique.</p>
+            <span class="profile-link">View profile</span>
+          </div>
+        </a>
+
+        <a href="profile-photographer-c.html" class="profile-card">
+          <div class="profile-image">
+            <img src="images/IMG_6814.jpg" alt="Josiah Adams portrait">
+          </div>
+          <div class="profile-copy">
+            <span class="profile-name">Josiah Adams</span>
+            <span class="profile-role">Creative + Lifestyle Photographer</span>
+            <p class="profile-description">A bold visual thinker who blends modern composition with playful direction to create images that feel cinematic and real.</p>
+            <span class="profile-link">View profile</span>
+          </div>
+        </a>
+      </section>
+
+      <aside class="book-strip">
+        <p>Sessions with multiple photographers may be booked for a discounted rate, depending on availability and client preference.</p>
+        <a href="booking.html">Book a Session</a>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

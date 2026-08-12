@@ -173,6 +173,7 @@
   .nav-links a.nav-cta{
     padding-bottom:10px;
   }
+  .mobile-only-link{display:none;}
   .nav-links a::after{
     content:'';
     position:absolute;
@@ -220,6 +221,8 @@
     .nav-links a{padding:16px 32px; width:100%; border-top:1px solid rgba(27,26,23,0.08);}
     .nav-cta{margin:16px 32px; text-align:center;}
     .nav-toggle{display:block;}
+    .desktop-only-link{display:none;}
+    .mobile-only-link{display:block;}
   }
 
   /* ---------- hero ---------- */
@@ -812,6 +815,7 @@
     .nav-toggle{font-size:1.45rem;}
 
     section{padding:64px 0;}
+    #photographers{display:none;}
     .hero{padding:46px 0 54px;}
     .hero-frame{padding:34px 22px;}
     .hero-logo{
@@ -909,7 +913,8 @@
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
     <div class="nav-links" id="navLinks">
-      <a href="#photographers">Photographers</a>
+      <a href="#photographers" class="desktop-only-link">Photographers</a>
+      <a href="photographers.html" class="mobile-only-link">Photographers</a>
       <a href="#services">Services</a>
       <a href="#gallery">Gallery</a>
       <a href="#area">Service Area</a>

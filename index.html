@@ -537,6 +537,18 @@
     grid-template-columns:repeat(4, 1fr);
     gap:12px;
   }
+  .gallery-actions{
+    margin-top:24px;
+    display:flex;
+    justify-content:center;
+  }
+  .gallery-actions .btn{
+    background:var(--gold);
+    color:var(--ink);
+  }
+  .gallery-actions .btn:hover{
+    background:var(--paper);
+  }
   .cs-frame{
     aspect-ratio:1/1;
     background:#2a2924;
@@ -1057,6 +1069,9 @@
           <div class="cs-frame"><img src="images/gallery-06.jpeg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">06</span></div>
           <div class="cs-frame"><img src="images/gallery-07.jpeg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">07</span></div>
           <div class="cs-frame"><img src="images/gallery-08.jpeg" alt="" onerror="this.remove();"><div class="placeholder">+ Add photo</div><span class="frame-tag">08</span></div>
+        </div>
+        <div class="gallery-actions">
+          <a href="photographers.html" class="btn btn-primary">Our Photographers</a>
         </div>
       </div>
 </div>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Session — Triple Frame Photography</title>
+<meta name="description" content="Book a session with Triple Frame Photography — portrait, engagement, and event photography serving Springfield and the surrounding 20-mile area.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* Reused theme styles from index_1.html (kept minimal copy for consistency) */
+  :root{ --ink:#1B1A17; --fog:#EDEAE2; --paper:#F7F5EF; --blue:#2C4562; --gold:#C9A24B; }
+  *{margin:0;padding:0;box-sizing:border-box;} body{background:var(--fog);color:var(--ink);font-family:'Archivo',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  header{background:var(--fog);border-bottom:1px solid rgba(27,26,23,0.12)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:8px 32px}
+  .brand{display:flex;align-items:baseline;gap:7px}
+  .brand-wordmark{font-family:'Fraunces',serif;font-size:1.18rem;font-weight:600}
+  .nav-links a{margin-left:18px}
+  .sprocket-strip{height:22px;background:var(--ink);display:flex;align-items:center;justify-content:space-evenly}
+  .sprocket-strip span{width:9px;height:9px;border-radius:2px;background:var(--fog)}
+  .contact-section{padding:44px 0}
+  .section-head{margin-bottom:18px}
+  .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:40px}
+  .contact-label{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;font-weight:600}
+  .contact-value{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--ink);display:block;margin-bottom:12px;text-decoration:none}
+  .contact-details a.contact-value{color:var(--ink)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-group{margin-bottom:18px}
+  .form-group label{display:block;font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(27,26,23,0.4);margin-bottom:8px}
+  .form-group input,.form-group textarea,.form-group select{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(27,26,23,0.08);color:var(--ink);padding:10px 2px;font-family:'Archivo',sans-serif}
+  .submit-btn{display:inline-block;padding:10px 18px;background:var(--blue);color:var(--fog);border-radius:4px;border:none}
+  footer{padding:28px 0;background:transparent}
+
+  /* Title / heading styles matching main site */
+  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:450;line-height:1.05;letter-spacing:-0.01em}
+  h1{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:14px}
+</style>
+</head>
+<body>
+
+<div class="sprocket-strip" aria-hidden="true" id="sprocketTop"></div>
+
+<header>
+  <nav>
+    <a href="index_1.html#top" class="brand" aria-label="Triple Frame Photography">
+      <span class="brand-wordmark">Triple <span style="color:var(--blue)">Frame</span> Photography</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index_1.html#photographers">Photographers</a>
+      <a href="index_1.html#services">Services</a>
+      <a href="index_1.html#gallery">Gallery</a>
+      <a href="index_1.html#area">Service Area</a>
+      <a href="index_1.html#packages">Packages</a>
+      <a href="booking.html" class="nav-cta">Book a Session</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- Booking section (extracted) -->
+  <section id="contact" class="contact-section">
+    <div class="wrap">
+      <div class="section-head reveal">
+          <div>
+          <p class="section-tag">Roll 07 · Contact</p>
+          <h1>Let's book your session</h1>
+        </div>
+        <p>Tell us the date, the vibe, and roughly where — we'll take it from there.</p>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="contact-details">
+          <div>
+            <p class="contact-label">Email</p>
+            <a href="mailto:gavr410575@evangel.edu" class="contact-value">gavr410575@evangel.edu</a>
+          </div>
+          <div>
+            <p class="contact-label">Phone</p>
+            <a href="tel:+10000000000" class="contact-value">(000) 000-0000</a>
+          </div>
+          <div>
+            <p class="contact-label">Instagram</p>
+            <a href="#" class="contact-value">@tripleframephoto</a>
+          </div>
+          <div>
+            <p class="contact-label">Service Area</p>
+            <div class="contact-value" style="font-size:1.1rem;">Springfield · 20-mile radius</div>
+          </div>
+        </div>
+        <form id="bookingForm" onsubmit="return handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Name</label>
+              <input type="text" id="fname" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="femail">Email</label>
+              <input type="email" id="femail" placeholder="you@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fdate">Preferred date</label>
+              <input type="date" id="fdate">
+            </div>
+            <div class="form-group">
+              <label for="ftime">Preferred time</label>
+              <input type="time" id="ftime" value="12:00">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ftype">Session type</label>
+              <select id="ftype" name="ftype">
+                <option value="" disabled selected>Select session type</option>
+                <option value="sports-portraits">Sports portraits</option>
+                <option value="sports-events">Sports events</option>
+                <option value="portraits">Portraits</option>
+                <option value="graduation-sessions">Graduation sessions</option>
+                <option value="couple-shoots">Couple shoots</option>
+                <option value="engagement-sessions">Engagement sessions</option>
+                <option value="general-sessions">General sessions</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fduration">Length (minutes)</label>
+              <input type="number" id="fduration" value="60" min="15" step="15">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fmsg">Tell us a bit about it</label>
+            <textarea id="fmsg" rows="3" placeholder="Location ideas, timing, anything on your mind"></textarea>
+          </div>
+          <p id="availabilityNote" class="mono" style="font-size:0.68rem;color:var(--gold);display:none;margin-bottom:14px;"></p>
+          <button type="submit" class="submit-btn">Send Inquiry</button>
+          <p id="formNote" class="mono" style="margin-top:14px;font-size:0.68rem;color:rgba(27,26,23,0.6);display:none;"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="brand-mini">Triple Frame Photography</span>
+    <span>&copy; <span id="year"></span> · Springfield, serving a 20-mile radius</span>
+  </div>
+</footer>
+
+<div class="sprocket-strip" aria-hidden="true" id="sprocketBottom"></div>
+
+<script>
+  // minimal scripts copied from index_1.html for booking functionality
+  function fillSprockets(id, count){ const el=document.getElementById(id); for(let i=0;i<count;i++){ const s=document.createElement('span'); el.appendChild(s);} }
+  fillSprockets('sprocketTop',40); fillSprockets('sprocketBottom',40);
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const API_BASE_URL = "https://photo-business-bookings.onrender.com";
+  const CALDAV_CONNECTED = !API_BASE_URL.includes("your-backend-url");
+  function buildICSFile({ summary, description, dateStr, timeStr, duration }){
+    const [y,m,d]=dateStr.split('-'); const [hh,mm]=(timeStr||'12:00').split(':'); const pad=n=>String(n).padStart(2,'0'); const start=new Date(`${y}-${m}-${d}T${hh}:${mm}:00`); const end=new Date(start.getTime() + (Number(duration)||60)*60000);
+    const fmt=dt=>`${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
+    const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Triple Frame Photography//Booking//EN','BEGIN:VEVENT',`UID:${Date.now()}@tripleframephoto`,`DTSTAMP:${fmt(new Date())}Z`,`DTSTART:${fmt(start)}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    const blob=new Blob([ics],{type:'text/calendar'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='session-booking.ics'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  }
+
+  let availabilityTimer; let dateIsBlocked=false;
+  async function checkAvailability(){ const note=document.getElementById('availabilityNote'); const submitBtn=document.querySelector('#bookingForm .submit-btn'); const date=document.getElementById('fdate').value; dateIsBlocked=false; submitBtn.disabled=false; submitBtn.style.opacity='1'; if(!date || !CALDAV_CONNECTED){ note.style.display='none'; return; } clearTimeout(availabilityTimer); availabilityTimer=setTimeout(async()=>{ try{ const res=await fetch(`${API_BASE_URL}/api/availability?date=${date}`); const data=await res.json(); if(data.busyCount>0){ dateIsBlocked=true; note.textContent="That date is already booked — please choose a different date."; note.style.color='#d97757'; note.style.display='block'; submitBtn.disabled=true; submitBtn.style.opacity='0.5'; } else { note.style.display='none'; } }catch(err){ note.style.display='none'; } },400); }
+  document.getElementById('fdate')?.addEventListener('change', checkAvailability);
+
+  async function handleSubmit(e){ e.preventDefault(); const note=document.getElementById('formNote'); if(dateIsBlocked){ note.textContent="That date isn't available — please pick a different one."; note.style.display='block'; return false; }
+    const payload={ name:document.getElementById('fname').value, email:document.getElementById('femail').value, date:document.getElementById('fdate').value, time:document.getElementById('ftime').value, duration:document.getElementById('fduration').value, type:document.getElementById('ftype').value, message:document.getElementById('fmsg').value };
+    if(payload.date){ buildICSFile({ summary:`${payload.type || 'Photography session'} — Triple Frame Photography`, description:`Requested by ${payload.name}\n${payload.message || ''}`, dateStr:payload.date, timeStr:payload.time, duration:payload.duration }); }
+    if(!CALDAV_CONNECTED){ note.textContent="Thanks! This is saved to your calendar as a download. (Live booking sync isn't connected yet — see server/README.md.)"; note.style.display='block'; return false; }
+    note.textContent='Sending...'; note.style.display='block'; try{ const res=await fetch(`${API_BASE_URL}/api/book`,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }); const data=await res.json(); if(res.ok){ note.textContent="Booked! We've added it to our calendar and will follow up by email."; document.getElementById('bookingForm').reset(); } else { note.textContent=data.error || "Something went wrong sending that — try again or email us directly."; } }catch(err){ note.textContent="Couldn't reach the booking server — try again or email us directly."; } return false; }
+</script>
+
+<script>
+  // Apply admin settings and local blocked dates on the booking page.
+  (() => {
+    const key = 'tripleFrameAdminSettings';
+    let settings;
+    try { settings = JSON.parse(localStorage.getItem(key) || 'null'); } catch { settings = null; }
+    if(!settings) return;
+    const setText = (selector, value) => { const el = document.querySelector(selector); if(el && value) el.textContent = value; };
+    if(settings.siteName){ document.title = `Book a Session — ${settings.siteName}`; document.querySelectorAll('.brand-wordmark, .brand-mini').forEach(el => el.textContent = settings.siteName); }
+    setText('.section-head h1', settings.bookingHeading);
+    setText('.section-head > p', settings.bookingIntro);
+    const emailLink = document.querySelector('.contact-details a[href^="mailto:"]');
+    const phoneLink = document.querySelector('.contact-details a[href^="tel:"]');
+    const instagramLink = document.querySelector('.contact-details a[href="#"]');
+    if(emailLink && settings.email){ emailLink.textContent = settings.email; emailLink.href = `mailto:${settings.email}`; }
+    if(phoneLink && settings.phone){ phoneLink.textContent = settings.phone; phoneLink.href = `tel:${settings.phone.replace(/[^\d+]/g, '')}`; }
+    if(instagramLink && settings.instagram){ instagramLink.textContent = settings.instagram; }
+    setText('.contact-details .contact-value[style*="font-size"]', settings.serviceArea);
+    const dateInput = document.getElementById('fdate');
+    const note = document.getElementById('availabilityNote');
+    const submitButton = document.querySelector('#bookingForm .submit-btn');
+    const blockedDates = Array.isArray(settings.blockedDates) ? settings.blockedDates : [];
+    const originalCheckAvailability = window.checkAvailability;
+    const originalHandleSubmit = window.handleSubmit;
+    const applyLocalBlock = () => {
+      const blocked = blockedDates.includes(dateInput.value);
+      if(blocked){
+        dateIsBlocked = true;
+        note.textContent = 'That date is unavailable — please choose a different date.';
+        note.style.display = 'block';
+        submitButton.disabled = true;
+        submitButton.style.opacity = '0.5';
+      } else if(!dateIsBlocked || dateInput.value){
+        dateIsBlocked = false;
+        submitButton.disabled = false;
+        submitButton.style.opacity = '1';
+        if(!dateInput.value) note.style.display = 'none';
+      }
+    };
+    dateInput.addEventListener('change', () => { if(originalCheckAvailability) originalCheckAvailability(); applyLocalBlock(); });
+    window.handleSubmit = async event => { if(blockedDates.includes(dateInput.value)){ event.preventDefault(); applyLocalBlock(); return false; } return originalHandleSubmit(event); };
+  })();
+</script>
+
+</body>
+</html>

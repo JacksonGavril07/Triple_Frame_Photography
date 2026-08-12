@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Triple Frame Photography</title>
-<meta name="description" content="Triple Frame Photography — portrait, engagement, and event photography serving Springfield and the surrounding 5-mile area.">
+<meta name="description" content="Triple Frame Photography — portrait, engagement, and event photography serving Springfield and the surrounding 20-mile area.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -61,25 +61,54 @@
 
   /* ---------- sprocket strip ---------- */
   .sprocket-strip{
+    position:relative;
     height:22px;
-    background:var(--ink);
+    background-color:var(--ink);
+    background-image:linear-gradient(90deg, var(--fog) 0 9px, transparent 9px 34px);
+    background-size:34px 9px;
+    background-position:var(--film-offset-x, 0px) center;
+    background-repeat:repeat-x;
+    transition:background-position 0.12s ease-out;
     display:flex;
     align-items:center;
     justify-content:space-evenly;
     overflow:hidden;
   }
+  #sprocketTop{
+    position:sticky;
+    top:0;
+    z-index:60;
+    height:22px;
+    background:var(--fog);
+    background-image:none;
+  }
+  #sprocketTop::before{
+    content:'';
+    position:absolute;
+    inset:0 auto 0 0;
+    width:var(--bar-width, 0%);
+    background-color:var(--ink);
+    background-image:linear-gradient(90deg, var(--fog) 0 9px, transparent 9px 34px);
+    background-size:34px 9px;
+    background-position:var(--film-offset-x, 0px) center;
+    background-repeat:repeat-x;
+    transition:width 0.12s ease-out, background-position 0.12s ease-out;
+    pointer-events:none;
+  }
   .sprocket-strip span{
     width:9px;
     height:9px;
     border-radius:2px;
-    background:var(--fog);
+    background:transparent;
     flex-shrink:0;
+    position:relative;
+    z-index:1;
   }
 
   /* ---------- nav ---------- */
   header{
     position:sticky;
-    top:0;
+    top:22px;
     z-index:50;
     background:var(--fog);
     border-bottom:1px solid rgba(27,26,23,0.12);
@@ -87,7 +116,7 @@
     will-change:transform;
   }
   header.header-hidden{
-    transform:translateY(-100%);
+    transform:translateY(calc(-100% - 22px));
   }
   header.header-compact{
     box-shadow:0 10px 24px rgba(27,26,23,0.08);
@@ -141,6 +170,9 @@
     padding-bottom:2px;
     color:var(--ink);
   }
+  .nav-links a.nav-cta{
+    padding-bottom:10px;
+  }
   .nav-links a::after{
     content:'';
     position:absolute;
@@ -152,13 +184,19 @@
   }
   .nav-links a:hover::after{width:100%;}
   .nav-cta{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
     background:var(--ink);
     color:var(--paper) !important;
     padding:10px 20px;
+    min-height:36px;
     border-radius:2px;
     font-size:0.78rem;
     letter-spacing:0.06em;
     text-transform:uppercase;
+    line-height:1;
   }
   .nav-toggle{display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--ink);}
 
@@ -287,6 +325,7 @@
   .hero-meta{
     margin-top:52px;
     display:flex;
+    justify-content:center;
     gap:40px;
     flex-wrap:wrap;
     font-family:'Space Mono', monospace;
@@ -294,6 +333,12 @@
     color:var(--line);
     text-transform:uppercase;
     letter-spacing:0.08em;
+  }
+  .hero-meta div{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
   }
 
   @media (max-width:900px){
@@ -654,16 +699,22 @@
   }
   .contact-label{
     font-family:'Space Mono', monospace;
-    font-size:0.68rem;
-    letter-spacing:0.1em;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
     text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:6px;
+    color:var(--blue);
+    margin-bottom:8px;
+    font-weight:600;
   }
   .contact-value{
     font-family:'Fraunces', serif;
-    font-size:1.4rem;
+    font-size:1.05rem;
+    color:var(--ink);
+    display:block;
+    margin-bottom:12px;
+    text-decoration:none;
   }
+  .contact-details a.contact-value{color:var(--ink);} 
 
   .form-group{margin-bottom:18px;}
   .form-group label{
@@ -675,7 +726,7 @@
     color:rgba(237,234,226,0.65);
     margin-bottom:8px;
   }
-  .form-group input, .form-group textarea{
+  .form-group input, .form-group textarea, .form-group select{
     width:100%;
     background:transparent;
     border:none;
@@ -863,7 +914,7 @@
       <a href="#gallery">Gallery</a>
       <a href="#area">Service Area</a>
       <a href="#packages">Packages</a>
-      <a href="#contact" class="nav-cta">Book a Session</a>
+      <a href="booking.html" class="nav-cta">Book a Session</a>
     </div>
   </nav>
 </header>
@@ -881,12 +932,12 @@
         <h1>Three perspectives.<br><em>One story.</em></h1>
         <p class="hero-sub">Triple Frame Photography is a small student owned and operated business that aims to deliver an exceptional experience by capturing creative ideas worth framing. Our goal is to meet every client with more that what they expect and deliver an experience that doesn't just speak to skill, rather one that shows a drive for excellence.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Book a Session</a>
+          <a href="booking.html" class="btn btn-primary">Book a Session</a>
           <a href="#gallery" class="btn btn-ghost">View Our Work</a>
         </div>
         <div class="hero-meta">
           <div>Based in<span>Springfield</span></div>
-          <div>Service radius<span>5 miles</span></div>
+          <div>Service radius<span>20 miles</span></div>
           <div>Booking<span>Weekends &amp; Weekdays</span></div>
         </div>
         <span class="frame-label br">002A / 24 · 50mm</span>
@@ -902,7 +953,6 @@
           <p class="section-tag">Roll 02 · Photographers</p>
           <h2>Meet the photographers behind the frames</h2>
         </div>
-        <p>Each profile links to a separate page with that photographer’s shooting style, creative approach, and personal story.</p>
       </div>
 
       <div class="profile-grid reveal">
@@ -950,7 +1000,7 @@
           <p class="section-tag">Roll 03 · Services</p>
           <h2>What we shoot</h2>
         </div>
-        <p>Every session is shot by both of us where possible — one eye on the wide shot, one on the detail.</p>
+        <p>Note:&nbsp;&nbsp;Sessions with multiple photographers may be booked for a discounted rate, depending on availability and preference of the client.</p>
       </div>
       <div class="services-grid reveal">
         <div class="service-card">
@@ -1013,8 +1063,8 @@
       <div class="area-grid">
         <div class="area-copy reveal">
           <p class="section-tag">Roll 05 · Where We Shoot</p>
-          <h2 style="font-size:clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom:20px;">Springfield, and about 5 miles out</h2>
-          <p>We're based in the Springfield area and currently keep our sessions within a 5-mile radius — close enough that we can scout the light beforehand and keep travel time out of your session.</p>
+          <h2 style="font-size:clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom:20px;">Springfield, and about 20 miles out</h2>
+          <p>We're based in the Springfield area and currently keep our sessions within a 20-mile radius — close enough that we can scout the light beforehand and keep travel time out of your session.</p>
           <p>Just outside the radius? Ask anyway — we take out-of-area sessions on a case-by-case basis.</p>
           <ul class="area-list">
             <li>Downtown Springfield</li>
@@ -1024,7 +1074,7 @@
           </ul>
         </div>
         <div class="radius-diagram reveal">
-          <svg width="360" height="360" viewBox="0 0 360 360" role="img" aria-label="Diagram showing a five mile service radius centered on Springfield">
+          <svg width="360" height="360" viewBox="0 0 360 360" role="img" aria-label="Diagram showing a twenty mile service radius centered on Springfield">
             <circle cx="180" cy="180" r="150" fill="none" stroke="#2C4562" stroke-width="1" stroke-dasharray="4 6" opacity="0.55"/>
             <circle cx="180" cy="180" r="110" fill="none" stroke="#2C4562" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
             <circle cx="180" cy="180" r="150" fill="none" stroke="#1B1A17" stroke-width="1.4"/>
@@ -1033,7 +1083,7 @@
             <circle cx="180" cy="180" r="7" fill="#C9A24B"/>
             <circle cx="180" cy="180" r="14" fill="none" stroke="#C9A24B" stroke-width="1"/>
             <text x="180" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" fill="#1B1A17" letter-spacing="1">SPRINGFIELD</text>
-            <text x="180" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" fill="#2C4562" letter-spacing="1">5 MI RADIUS</text>
+            <text x="180" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" fill="#2C4562" letter-spacing="1">20 MI RADIUS</text>
           </svg>
         </div>
       </div>
@@ -1045,8 +1095,8 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="section-tag">Roll 06 · Packages</p>
-          <h2>Session options</h2>
+          <p class="section-tag">Roll 06 · Discounts for more</p>
+          <h2>Package Deals</h2>
         </div>
         <p>General starting points — every package can flex to fit what you actually need.</p>
       </div>
@@ -1060,7 +1110,7 @@
             <li>One location</li>
             <li>Edited digital gallery</li>
           </ul>
-          <a href="#contact" class="btn btn-ghost" style="text-align:center;">Ask About This</a>
+          <a href="booking.html" class="btn btn-ghost" style="text-align:center;">Ask About This</a>
         </div>
         <div class="package-card featured">
           <p class="package-tag">Standard</p>
@@ -1072,7 +1122,7 @@
             <li>Full edited gallery</li>
             <li>Print-ready &amp; web-ready files</li>
           </ul>
-          <a href="#contact" class="btn btn-primary" style="text-align:center; background:var(--gold); color:var(--ink);">Book This</a>
+          <a href="booking.html" class="btn btn-primary" style="text-align:center; background:var(--gold); color:var(--ink);">Book This</a>
         </div>
         <div class="package-card">
           <p class="package-tag">Extended</p>
@@ -1083,91 +1133,21 @@
             <li>Both photographers on site</li>
             <li>Full edited gallery</li>
           </ul>
-          <a href="#contact" class="btn btn-ghost" style="text-align:center;">Ask About This</a>
+          <a href="booking.html" class="btn btn-ghost" style="text-align:center;">Ask About This</a>
         </div>
       </div>
       <p class="swap-note" style="margin-top:36px;">Package details and pricing above are placeholders — swap in your actual rates and inclusions whenever you've settled on them.</p>
     </div>
   </section>
 
-  <!-- ================= CONTACT ================= -->
-  <section id="contact" class="contact-section">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="section-tag">Roll 07 · Contact</p>
-          <h2>Let's book your session</h2>
-        </div>
-        <p>Tell us the date, the vibe, and roughly where — we'll take it from there.</p>
-      </div>
-      <div class="contact-grid reveal">
-        <div class="contact-details">
-          <div>
-            <p class="contact-label">Email</p>
-            <a href="mailto:gavr410575@evangel.edu" class="contact-value">gavr410575@evangel.edu</a>
-          </div>
-          <div>
-            <p class="contact-label">Phone</p>
-            <a href="tel:+10000000000" class="contact-value">(000) 000-0000</a>
-          </div>
-          <div>
-            <p class="contact-label">Instagram</p>
-            <a href="#" class="contact-value">@tripleframephoto</a>
-          </div>
-          <div>
-            <p class="contact-label">Service Area</p>
-            <div class="contact-value" style="font-size:1.1rem;">Springfield · 5-mile radius</div>
-          </div>
-        </div>
-        <form id="bookingForm" onsubmit="return handleSubmit(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">Name</label>
-              <input type="text" id="fname" placeholder="Your name" required>
-            </div>
-            <div class="form-group">
-              <label for="femail">Email</label>
-              <input type="email" id="femail" placeholder="you@email.com" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fdate">Preferred date</label>
-              <input type="date" id="fdate">
-            </div>
-            <div class="form-group">
-              <label for="ftime">Preferred time</label>
-              <input type="time" id="ftime" value="12:00">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="ftype">Session type</label>
-              <input type="text" id="ftype" placeholder="Portrait, engagement...">
-            </div>
-            <div class="form-group">
-              <label for="fduration">Length (minutes)</label>
-              <input type="number" id="fduration" value="60" min="15" step="15">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="fmsg">Tell us a bit about it</label>
-            <textarea id="fmsg" rows="3" placeholder="Location ideas, timing, anything on your mind"></textarea>
-          </div>
-          <p id="availabilityNote" class="mono" style="font-size:0.68rem; color:var(--gold); display:none; margin-bottom:14px;"></p>
-          <button type="submit" class="submit-btn">Send Inquiry</button>
-          <p id="formNote" class="mono" style="margin-top:14px; font-size:0.68rem; color:rgba(237,234,226,0.7); display:none;"></p>
-        </form>
-      </div>
-    </div>
-  </section>
+  <!-- Booking moved to booking.html -->
 
 </main>
 
 <footer>
   <div class="wrap footer-inner">
-    <span class="brand-mini"><img src="images/triple-frame-logo.png" alt="Triple Frame Photography logo"><span>Triple Frame Photography</span></span>
-    <span>&copy; <span id="year"></span> · Springfield, serving a 5-mile radius</span>
+    <span class="brand-mini">Triple Frame Photography</span>
+    <span>&copy; <span id="year"></span> · Springfield, serving a 20-mile radius</span>
   </div>
 </footer>
 
@@ -1177,13 +1157,40 @@
   // sprocket holes
   function fillSprockets(id, count){
     const el = document.getElementById(id);
+    const delayStep = id === 'sprocketTop' ? 0.03 : 0.02;
     for(let i=0;i<count;i++){
       const s = document.createElement('span');
+      s.style.setProperty('--delay', `${(i * delayStep).toFixed(2)}s`);
       el.appendChild(s);
     }
   }
   fillSprockets('sprocketTop', 40);
   fillSprockets('sprocketBottom', 40);
+
+  // roll the film-strip pattern according to the page's scroll position
+  const sprocketStrips = document.querySelectorAll('.sprocket-strip');
+  let scrollFrame;
+  function updateSprocketRoll(){
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollableHeight > 0
+      ? Math.min(window.scrollY / scrollableHeight, 1)
+      : 0;
+    const horizontalOffset = `${(progress * 34).toFixed(2)}px`;
+    document.documentElement.style.setProperty('--bar-hidden', `${((1 - progress) * 100).toFixed(2)}%`);
+    document.documentElement.style.setProperty('--bar-width', `${(progress * 100).toFixed(2)}%`);
+    sprocketStrips.forEach(strip => {
+      strip.style.setProperty('--film-offset-x', horizontalOffset);
+    });
+  }
+  window.addEventListener('scroll', () => {
+    if(!scrollFrame){
+      scrollFrame = requestAnimationFrame(() => {
+        updateSprocketRoll();
+        scrollFrame = null;
+      });
+    }
+  }, { passive:true });
+  updateSprocketRoll();
 
   // mobile nav
   const siteHeader = document.querySelector('header');
@@ -1200,18 +1207,21 @@
   }));
 
   // hide header while scrolling down, show it again while scrolling up
+  const firstBox = document.querySelector('.hero-frame');
   let lastScrollY = window.scrollY;
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     const menuIsOpen = navLinks.classList.contains('open');
+    const firstBoxTop = firstBox ? firstBox.getBoundingClientRect().top : 0;
+    const reachedFirstBox = firstBoxTop <= siteHeader.getBoundingClientRect().bottom;
 
     siteHeader.classList.toggle('header-compact', currentScrollY > 12);
 
-    if(menuIsOpen || currentScrollY < 80){
+    if(menuIsOpen || currentScrollY <= 12 || !reachedFirstBox){
       siteHeader.classList.remove('header-hidden');
-    } else if(currentScrollY > lastScrollY + 6){
+    } else if(currentScrollY > lastScrollY + 2){
       siteHeader.classList.add('header-hidden');
-    } else if(currentScrollY < lastScrollY - 6){
+    } else if(currentScrollY < lastScrollY - 2){
       siteHeader.classList.remove('header-hidden');
     }
 
@@ -1242,6 +1252,8 @@
   });
 
   // ---- Apple Calendar (CalDAV) integration --------------------------------
+  // Booking scripts: only initialize if the booking form exists on this page.
+  if(document.getElementById('bookingForm')){
   // Point this at your deployed backend from /server (see server/README.md).
   // Leave as-is and the booking form will just show a friendly note instead
   // of erroring out.
@@ -1370,6 +1382,23 @@
     }
     return false;
   }
+  }
+</script>
+
+<script>
+  // Apply settings saved by admin.html when this site is opened from the same origin.
+  (() => {
+    const key = 'tripleFrameAdminSettings';
+    let settings;
+    try { settings = JSON.parse(localStorage.getItem(key) || 'null'); } catch { settings = null; }
+    if(!settings) return;
+    const setText = (selector, value) => { const el = document.querySelector(selector); if(el && value) el.textContent = value; };
+    if(settings.siteName){ document.title = settings.siteName; document.querySelectorAll('.brand-wordmark, .brand-mini').forEach(el => el.textContent = settings.siteName); }
+    setText('.hero-eyebrow', settings.heroEyebrow);
+    setText('.hero h1', settings.heroHeading);
+    setText('.hero-sub', settings.heroSub);
+    document.querySelectorAll('[data-service-area], footer .footer-inner span:last-child').forEach(el => { if(settings.serviceArea) el.textContent = `${settings.serviceArea}`; });
+  })();
 </script>
 
 </body>

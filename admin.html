@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triple Frame Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,600&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1B1A17;--fog:#EDEAE2;--paper:#F7F5EF;--blue:#2C4562;--gold:#C9A24B;--line:rgba(27,26,23,.14)}
+  *{box-sizing:border-box} body{margin:0;background:var(--fog);color:var(--ink);font-family:Archivo,sans-serif;line-height:1.5}
+  .topbar{background:var(--ink);color:var(--fog);padding:18px max(24px,calc((100% - 1120px)/2));display:flex;justify-content:space-between;gap:20px;align-items:center}
+  .topbar h1{margin:0;font:600 1.5rem Fraunces,serif}.topbar a{color:var(--fog);text-decoration:none;font-family:Space Mono,monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}
+  main{max-width:1120px;margin:0 auto;padding:44px 24px 70px}.intro{max-width:700px;margin-bottom:28px}.intro h2{font:450 clamp(2rem,5vw,3.5rem)/1.05 Fraunces,serif;margin:0 0 12px}.intro p{margin:0;color:rgba(27,26,23,.7)}
+  .notice{border:1px solid rgba(201,162,75,.55);background:rgba(201,162,75,.12);padding:14px 16px;margin:24px 0;font-size:.9rem}.notice strong{font-family:Space Mono,monospace;text-transform:uppercase;font-size:.68rem;letter-spacing:.08em}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.card{background:var(--paper);border:1px solid var(--line);padding:24px}.card h3{font:450 1.5rem Fraunces,serif;margin:0 0 18px}.field{margin-bottom:16px}.field label{display:block;font:700 .65rem Space Mono,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(27,26,23,.55);margin-bottom:7px}.field input,.field textarea,.profile-select{width:100%;border:1px solid var(--line);background:var(--fog);padding:11px 12px;color:var(--ink);font:inherit;border-radius:2px}.field textarea{min-height:92px;resize:vertical}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.button{border:0;padding:11px 16px;background:var(--ink);color:var(--paper);font:700 .68rem Space Mono,monospace;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;border-radius:2px}.button.secondary{background:var(--blue)}.button.light{background:transparent;color:var(--ink);border:1px solid var(--line)}.status{min-height:1.4em;margin-top:14px;color:var(--blue);font-size:.85rem}.blocked-list{list-style:none;padding:0;margin:0}.blocked-list li{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding:10px 0;font-family:Space Mono,monospace;font-size:.75rem}.remove{border:0;background:none;color:#9b3e32;cursor:pointer;font:700 .65rem Space Mono,monospace;text-transform:uppercase}.full{grid-column:1/-1}.schedule-tools{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end}.schedule-tools .field{margin:0}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.topbar{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="topbar"><h1>Triple Frame Admin</h1><a href="index_1.html">View website →</a></header>
+<main>
+  <div class="intro"><h2>Manage the frame.</h2><p>Update the core website content and mark dates unavailable from this browser.</p></div>
+  <div class="notice"><strong>Important:</strong> This static-site dashboard saves settings in this browser’s local storage. It does not change the live site for other visitors unless the site is later connected to a shared backend or database.</div>
+  <section class="card" style="margin-bottom:22px"><h3>Shared schedule login</h3><p style="margin:0 0 16px;color:rgba(27,26,23,.7);font-size:.9rem">Log in to the shared Node server to manage schedules for all three photographers.</p><div class="schedule-tools"><div class="field"><label for="apiUrl">Schedule API URL</label><input id="apiUrl" value="http://localhost:8787"></div><div class="field"><label for="loginEmail">Email</label><input id="loginEmail" type="email"></div><div class="field"><label for="loginPassword">Password</label><input id="loginPassword" type="password"></div><button class="button secondary" type="button" id="loginButton">Log in</button></div><p class="status" id="serverStatus" role="status"></p></section>
+  <section class="card" id="sharedSchedule" hidden><h3>Photographer schedules</h3><div class="field"><label for="profileSelect">Profile</label><select id="profileSelect" class="profile-select"></select></div><div class="schedule-tools"><div class="field"><label for="weekday">Weekly day</label><select id="weekday" class="profile-select"><option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option></select></div><div class="field"><label for="weeklyStart">Start</label><input id="weeklyStart" type="time" value="09:00"></div><div class="field"><label for="weeklyEnd">End</label><input id="weeklyEnd" type="time" value="17:00"></div><button class="button secondary" type="button" id="addWeekly">Add weekly time</button></div><ul class="blocked-list" id="weeklyList"></ul><div class="schedule-tools" style="margin-top:20px"><div class="field"><label for="sharedDate">Blocked date</label><input id="sharedDate" type="date"></div><div class="field"><label for="sharedStart">Block start (optional)</label><input id="sharedStart" type="time"></div><div class="field"><label for="sharedEnd">Block end (optional)</label><input id="sharedEnd" type="time"></div><button class="button" type="button" id="addSharedBlock">Add block</button></div><ul class="blocked-list" id="sharedBlockList"></ul><p class="status" id="scheduleStatus" role="status"></p></section>
+  <form id="settingsForm">
+    <div class="grid">
+      <section class="card"><h3>Business details</h3>
+        <div class="field"><label for="siteName">Business name</label><input id="siteName" required></div>
+        <div class="field"><label for="email">Email</label><input id="email" type="email"></div>
+        <div class="field"><label for="phone">Phone</label><input id="phone"></div>
+        <div class="field"><label for="instagram">Instagram handle</label><input id="instagram"></div>
+        <div class="field"><label for="serviceArea">Service area</label><input id="serviceArea"></div>
+      </section>
+      <section class="card"><h3>Homepage copy</h3>
+        <div class="field"><label for="heroEyebrow">Hero eyebrow</label><input id="heroEyebrow"></div>
+        <div class="field"><label for="heroHeading">Hero heading</label><input id="heroHeading"></div>
+        <div class="field"><label for="heroSub">Hero description</label><textarea id="heroSub"></textarea></div>
+      </section>
+      <section class="card"><h3>Booking page copy</h3>
+        <div class="field"><label for="bookingHeading">Booking heading</label><input id="bookingHeading"></div>
+        <div class="field"><label for="bookingIntro">Booking introduction</label><textarea id="bookingIntro"></textarea></div>
+      </section>
+      <section class="card"><h3>Unavailable dates</h3>
+        <div class="field"><label for="blockedDate">Add date to block</label><input id="blockedDate" type="date"></div>
+        <button class="button secondary" type="button" id="addDate">Block date</button>
+        <ul class="blocked-list" id="blockedList"></ul>
+      </section>
+      <section class="card full"><h3>Save and transfer settings</h3>
+        <div class="actions"><button class="button" type="submit">Save changes</button><button class="button light" type="button" id="exportSettings">Export settings</button><button class="button light" type="button" id="importSettings">Import settings</button><input id="settingsFile" type="file" accept="application/json" hidden></div>
+        <p class="status" id="status" role="status"></p>
+      </section>
+    </div>
+  </form>
+</main>
+<script>
+  const STORAGE_KEY='tripleFrameAdminSettings';
+  const defaults={siteName:'Triple Frame Photography',email:'gavr410575@evangel.edu',phone:'(000) 000-0000',instagram:'@tripleframephoto',serviceArea:'Springfield · 20-mile radius',heroEyebrow:'Portrait & Event Photography',heroHeading:'Three perspectives. One story.',heroSub:'Triple Frame Photography is a small student owned and operated business that aims to deliver an exceptional experience by capturing creative ideas worth framing.',bookingHeading:"Let's book your session",bookingIntro:"Tell us the date, the vibe, and roughly where — we'll take it from there.",blockedDates:[]};
+  const fields=['siteName','email','phone','instagram','serviceArea','heroEyebrow','heroHeading','heroSub','bookingHeading','bookingIntro'];
+  let settings=load();
+  function load(){try{return {...defaults,...JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}}catch{return {...defaults}}}
+  function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(settings));}
+  function render(){fields.forEach(id=>document.getElementById(id).value=settings[id]||'');const list=document.getElementById('blockedList');list.innerHTML='';[...settings.blockedDates].sort().forEach(date=>{const li=document.createElement('li');li.innerHTML=`<span>${date}</span><button class="remove" type="button" data-date="${date}">Remove</button>`;list.appendChild(li)});}
+  function message(text){document.getElementById('status').textContent=text;}
+  document.getElementById('settingsForm').addEventListener('submit',e=>{e.preventDefault();fields.forEach(id=>settings[id]=document.getElementById(id).value.trim());save();message('Saved in this browser. Open the website in this same browser to preview the changes.')});
+  document.getElementById('addDate').addEventListener('click',()=>{const input=document.getElementById('blockedDate');if(!input.value)return message('Choose a date first.');if(!settings.blockedDates.includes(input.value))settings.blockedDates.push(input.value);input.value='';save();render();message('Date blocked in this browser.')});
+  document.getElementById('blockedList').addEventListener('click',e=>{const date=e.target.dataset.date;if(!date)return;settings.blockedDates=settings.blockedDates.filter(item=>item!==date);save();render();message('Date unblocked.')});
+  document.getElementById('exportSettings').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(settings,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='triple-frame-settings.json';a.click();URL.revokeObjectURL(a.href);message('Settings exported.')});
+  document.getElementById('importSettings').addEventListener('click',()=>document.getElementById('settingsFile').click());
+  document.getElementById('settingsFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{settings={...defaults,...JSON.parse(await file.text())};save();render();message('Settings imported.')}catch{message('That file could not be imported.')}});
+  let apiUrl=''; let profiles=[]; let currentSchedule={weekly:[],blocked:[]};
+  const serverMessage=text=>document.getElementById('serverStatus').textContent=text;
+  const scheduleMessage=text=>document.getElementById('scheduleStatus').textContent=text;
+  async function api(path, options={}){const response=await fetch(`${apiUrl}${path}`,{...options,credentials:'include',headers:{'Content-Type':'application/json',...(options.headers||{})}});const data=response.status===204?null:await response.json();if(!response.ok)throw new Error(data?.error||'Server request failed.');return data;}
+  function renderSharedSchedule(){const weekly=document.getElementById('weeklyList');weekly.innerHTML='';currentSchedule.weekly.forEach(item=>{const li=document.createElement('li');li.textContent=`${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][item.weekday]} ${item.start_time}–${item.end_time}`;weekly.appendChild(li)});const blocked=document.getElementById('sharedBlockList');blocked.innerHTML='';currentSchedule.blocked.forEach(item=>{const li=document.createElement('li');li.innerHTML=`<span>${item.date} · ${item.start_time&&item.end_time?`${item.start_time}–${item.end_time}`:'all day'}${item.reason?` · ${item.reason}`:''}</span><button class="remove" type="button" data-block-id="${item.id}">Remove</button>`;blocked.appendChild(li)})}
+  async function loadSchedule(){const id=document.getElementById('profileSelect').value;if(!id)return;currentSchedule=await api(`/api/schedule/${id}`);renderSharedSchedule();}
+  document.getElementById('loginButton').addEventListener('click',async()=>{apiUrl=document.getElementById('apiUrl').value.replace(/\/$/,'');try{const result=await api('/api/auth/login',{method:'POST',body:JSON.stringify({email:document.getElementById('loginEmail').value,password:document.getElementById('loginPassword').value})});profiles=result.user.role==='admin'?await api('/api/admin/photographers'): [result.user];const select=document.getElementById('profileSelect');select.innerHTML=profiles.map(profile=>`<option value="${profile.id}">${profile.name} — ${profile.role}</option>`).join('');document.getElementById('sharedSchedule').hidden=false;await loadSchedule();serverMessage(`Signed in as ${result.user.name}.`)}catch(error){serverMessage(error.message)}});
+  document.getElementById('profileSelect').addEventListener('change',()=>loadSchedule().catch(error=>scheduleMessage(error.message)));
+  document.getElementById('addWeekly').addEventListener('click',async()=>{try{const entries=[...currentSchedule.weekly,{weekday:Number(document.getElementById('weekday').value),start_time:document.getElementById('weeklyStart').value,end_time:document.getElementById('weeklyEnd').value}];await api(`/api/schedule/${document.getElementById('profileSelect').value}/weekly`,{method:'PUT',body:JSON.stringify({entries})});await loadSchedule();scheduleMessage('Weekly availability saved.')}catch(error){scheduleMessage(error.message)}});
+  document.getElementById('addSharedBlock').addEventListener('click',async()=>{try{await api(`/api/schedule/${document.getElementById('profileSelect').value}/blocked`,{method:'POST',body:JSON.stringify({date:document.getElementById('sharedDate').value,start_time:document.getElementById('sharedStart').value||null,end_time:document.getElementById('sharedEnd').value||null,reason:'Admin block'})});await loadSchedule();scheduleMessage('Blocked time saved.')}catch(error){scheduleMessage(error.message)}});
+  document.getElementById('sharedBlockList').addEventListener('click',async event=>{const id=event.target.dataset.blockId;if(!id)return;try{await api(`/api/schedule/blocked/${id}`,{method:'DELETE'});await loadSchedule();scheduleMessage('Blocked time removed.')}catch(error){scheduleMessage(error.message)}});
+  render();
+</script>
+</body>
+</html>
